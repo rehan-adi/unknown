@@ -1,0 +1,46 @@
+{
+	"name": "unknown",
+	"version": "1.0.0",
+	"description": "You ask what you don't know to unknown",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"format": "prettier --write .",
+		"format:check": "prettier --check ."
+	},
+	"workspaces": [
+		"apps/*",
+		"packages/*",
+		"services/*"
+	],
+	"author": {
+		"name": "Rehan",
+		"email": "official.rehan.me@gmail.com"
+	},
+	"license": "MIT",
+	"keywords": [
+		"unknown",
+		"ai",
+		"rag",
+		"bun",
+		"hono",
+		"python",
+		"postgresql",
+		"typescript"
+	],
+	"devDependencies": {
+		"@types/bun": "latest",
+		"prettier": "^3.6.2"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rehan-adi/unknown"
+	},
+	"packageManager": "bun@1.2.17",
+	"engines": {
+		"bun": ">=1.2.17"
+	}
+}

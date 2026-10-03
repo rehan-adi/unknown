@@ -1,0 +1,27 @@
+node_modules/
+dist/
+build/
+.next/
+coverage/
+bun.lockb
+bun.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Env files
+.env*
+!.env.example
+
+# Auto-generated files
+*.min.js
+*.min.css

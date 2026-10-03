@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports: ['5432:5432']
+    environment:
+      POSTGRES_USER: unknown
+      POSTGRES_PASSWORD: unknown_password
+      POSTGRES_DB: primary_database
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
