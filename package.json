@@ -6,7 +6,9 @@
 	"type": "module",
 	"scripts": {
 		"format": "prettier --write .",
-		"format:check": "prettier --check ."
+		"format:check": "prettier --check .",
+		"start:inference-service": "cd services/inference-service && uv run python -m src.server",
+		"format:inference-service": "cd services/inference-service && uvx ruff format . && uvx ruff check --fix ."
 	},
 	"workspaces": [
 		"apps/*",
