@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from ..config.constant import api_response
+from ..utils.response import api_response
 
 health_router = APIRouter()
 
