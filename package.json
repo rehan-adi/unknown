@@ -7,8 +7,9 @@
 	"scripts": {
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
-		"start:inference-service": "cd services/inference-service && uv run python -m src.server",
-		"format:inference-service": "cd services/inference-service && uvx ruff format . && uvx ruff check --fix ."
+		"start:api-service": "cd services/api-service && bun run src/server.ts",
+		"format:inference-service": "cd services/inference-service && uvx ruff format . && uvx ruff check --fix .",
+		"start:inference-service": "cd services/inference-service && uv run uvicorn src.server:app --host 0.0.0.0 --port 8000"
 	},
 	"workspaces": [
 		"apps/*",

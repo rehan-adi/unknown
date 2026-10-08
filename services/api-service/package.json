@@ -1,0 +1,27 @@
+{
+	"name": "@unknown/api-service",
+	"version": "1.0.0",
+	"description": "Core API service handling REST endpoints and voice agents",
+	"type": "module",
+	"module": "src/server.ts",
+	"private": true,
+	"author": "Rehan <official.rehan.me@gmail.com>",
+	"scripts": {
+		"start": "bun run src/server.ts"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"hono": "^4.0.0",
+		"@livekit/agents": "latest",
+		"@livekit/rtc-node": "latest",
+		"dotenv": "^16.4.5",
+		"zod": "^3.23.8",
+		"@sentry/bun": "latest",
+		"@unknown/logger": "workspace:*"
+	}
+}
