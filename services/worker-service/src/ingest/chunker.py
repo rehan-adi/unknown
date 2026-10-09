@@ -1,30 +1,28 @@
-import re
 from typing import Dict, List
 
+from unstructured.chunking.title import chunk_by_title
+from unstructured.partition.md import partition_md
 
-def chunk_markdown(text: str, max_chunk_size: int = 1000) -> List[Dict]:
-    lines = text.split("\n")
-    chunks = []
-    current_heading = ""
-    current_chunk = ""
-    in_code_block = False
 
-    for line in lines:
-        if line.startswith("```"):
-            in_code_block = not in_code_block
+def chunk_markdown(text: str) -> List[Dict]:
+    """
+    Semantic Chunking:
+    Instead of cutting text at a random 1000 character limit (which cuts sentences in half),
+    this uses Machine Learning to logically group paragraphs under their section titles.
+    """
+    # 1. Parse the Markdown into structural elements (Titles, Paragraphs, Lists)
+    elements = partition_md(text=text)
 
-        if not in_code_block and re.match(r"^#{1,6}\s", line):
-            if current_chunk.strip():
-                chunks.append({"heading": current_heading, "content": current_chunk.strip()})
-            current_heading = line.strip()
-            current_chunk = ""
-        else:
-            current_chunk += line + "\n"
-            if len(current_chunk) > max_chunk_size and not in_code_block:
-                chunks.append({"heading": current_heading, "content": current_chunk.strip()})
-                current_chunk = ""
+    # 2. Chunk elements semantically by Title/Section boundaries
+    chunks = chunk_by_title(
+        elements,
+        max_characters=1500,
+        new_after_n_chars=1200,
+        combine_text_under_n_chars=400,
+    )
 
-    if current_chunk.strip():
-        chunks.append({"heading": current_heading, "content": current_chunk.strip()})
+    result = []
+    for chunk in chunks:
+        result.append({"heading": "Semantic Chunk", "content": str(chunk)})
 
-    return chunks
+    return result

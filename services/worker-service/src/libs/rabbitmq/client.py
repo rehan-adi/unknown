@@ -26,7 +26,7 @@ async def start_consumer(
             queue_name, durable=True, arguments={"x-dead-letter-exchange": ENV_CONFIG.DLX_NAME}
         )
 
-        await channel.set_qos(prefetch_count=1)
+        await channel.set_qos(prefetch_count=10)
 
         logger.info(f"Worker successfully connected and listening on queue '{queue_name}'...")
         await queue.consume(callback)
