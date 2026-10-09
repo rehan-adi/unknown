@@ -8,6 +8,8 @@
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
 		"start:api-service": "cd services/api-service && bun run src/server.ts",
+		"start:worker-service": "cd services/worker-service && PYTHONPATH=src uv run python -c \"from main import run_worker; run_worker()\"",
+		"format:worker-service": "cd services/worker-service && uvx ruff format . && uvx ruff check --fix .",
 		"format:inference-service": "cd services/inference-service && uvx ruff format . && uvx ruff check --fix .",
 		"start:inference-service": "cd services/inference-service && uv run uvicorn src.server:app --host 0.0.0.0 --port 8000"
 	},
@@ -29,7 +31,9 @@
 		"hono",
 		"python",
 		"postgresql",
-		"typescript"
+		"typescript",
+		"qdrant",
+		"rabbitmq"
 	],
 	"devDependencies": {
 		"@types/bun": "latest",
